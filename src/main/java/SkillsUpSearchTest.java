@@ -11,12 +11,11 @@ public class SkillsUpSearchTest extends BasePage {
 
 
     @Test
-
     public void testTestLookingForArtem() throws Exception {
         String PersonName = "Артем Карпов";
         System.out.println("Start looking for " + PersonName);
         lookingPersonByName(PersonName);
-        assertFalse("Why is Artem here??", memberText.contains("Артем 1оывловл"));
+        assertFalse("Why is Artem here?!", memberText.contains("Артем Карпов"));
         System.out.println(PersonName + " not found :-( \n");
     }
 
