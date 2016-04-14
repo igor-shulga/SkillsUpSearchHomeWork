@@ -1,8 +1,6 @@
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-
-
 import java.util.List;
 
 
@@ -20,9 +18,8 @@ public class SkillsUpSearchTest extends BasePage {
         lookingPersonByName(PersonName);
         assertFalse("Why is Artem here??", memberText.contains("Артем 1оывловл"));
         System.out.println(PersonName + " not found :-( \n");
-
-
     }
+
 
     @Test
     public void testTestLookingForMisha() throws Exception {
@@ -30,8 +27,8 @@ public class SkillsUpSearchTest extends BasePage {
         System.out.println("Start looking for " + PersonName);
         lookingPersonByName(PersonName);
         assertTrue("Where is Misha??", memberText.contains("Чокан"));
-
     }
+
 
     @Test
     public void testTestLookingForAlexander() throws Exception {
@@ -41,6 +38,7 @@ public class SkillsUpSearchTest extends BasePage {
         assertTrue("Where is Misha??", isPresent == true);
         System.out.println("Alexander Galkovski found");
     }
+
 
     public String lookingPersonByName(String PersonName) {
 
