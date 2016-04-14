@@ -34,7 +34,7 @@ public class SkillsUpSearchTest extends BasePage {
 
         System.out.println("Start looking for Alexander Galkovski");
         Boolean isPresent = driver.findElements(xPathForAlexander).size() > 0;
-        assertTrue("Where is Misha??", isPresent == true);
+        assertTrue("Where is Alexander?He is not found", isPresent == true);
         System.out.println("Alexander Galkovski found");
     }
 
