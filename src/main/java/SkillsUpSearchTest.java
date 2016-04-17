@@ -10,7 +10,7 @@ public class SkillsUpSearchTest extends BasePage {
     private String memberText;
     private By xPathForAlexander = new By.ByXPath("//*[@id='page_position_content']/div[3]/div[1]/div[2]/a/span[1]");
     private boolean x;
-    private By artemCss = By.cssSelector("img[src*='Karpov']");
+    private By artemXpath = By.xpath("//img[contains(@src,'/media/22116/Artem-Karpov_P.jpg')]");
 
     @Test
     public void testTestLookingForArtem() throws Exception {
@@ -51,7 +51,7 @@ public class SkillsUpSearchTest extends BasePage {
     public boolean artemAreYouHere(){
 
         try {
-            driver.findElement(artemCss);
+            driver.findElement(artemXpath);
             return x=true;
         } catch (NoSuchElementException e) {
             System.err.println("Such element not found: " + e.getMessage());
