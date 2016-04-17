@@ -1,5 +1,6 @@
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import java.util.List;
 
@@ -8,7 +9,8 @@ public class SkillsUpSearchTest extends BasePage {
     private By skillsUpTeam = new By.ByClassName("member");
     private String memberText;
     private By xPathForAlexander = new By.ByXPath("//*[@id='page_position_content']/div[3]/div[1]/div[2]/a/span[1]");
-
+    private boolean x;
+    private By artemCss = By.cssSelector("img[src*='Karpov']");
 
     @Test
     public void testTestLookingForArtem() throws Exception {
@@ -38,6 +40,25 @@ public class SkillsUpSearchTest extends BasePage {
         System.out.println("Alexander Galkovski found");
     }
 
+    @Test
+    public void testFindArtemWithException()throws Exception{
+
+        artemAreYouHere();
+        assertFalse("Artem found", x == true);
+
+    }
+
+    public boolean artemAreYouHere(){
+
+        try {
+            driver.findElement(artemCss);
+            return x=true;
+        } catch (NoSuchElementException e) {
+            System.err.println("Such element not found: " + e.getMessage());
+            return x=false;
+        }
+
+    }
 
     public String lookingPersonByName(String PersonName) {
 
