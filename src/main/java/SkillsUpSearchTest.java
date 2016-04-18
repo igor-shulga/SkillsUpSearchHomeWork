@@ -2,6 +2,8 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+
 import java.util.List;
 
 
@@ -12,8 +14,12 @@ public class SkillsUpSearchTest extends BasePage {
     private boolean x;
     private By artemXpath = By.xpath("//img[contains(@src,'/media/22116/Artem-Karpov_P.jpg')]");
 
+
+
     @Test
     public void testTestLookingForArtem() throws Exception {
+
+
         String PersonName = "Артем Карпов";
         System.out.println("Start looking for " + PersonName);
         lookingPersonByName(PersonName);
@@ -77,11 +83,3 @@ public class SkillsUpSearchTest extends BasePage {
 
 
 }
-
-
-
-
-
-
-
-
