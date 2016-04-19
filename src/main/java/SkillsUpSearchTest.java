@@ -59,7 +59,7 @@ public class SkillsUpSearchTest extends BasePage {
 
     }
 
-    private List getCoachList() {
+    private List <String> getCoachList() {
         List coachCards = new ArrayList();
         List<WebElement> element = driver.findElements(skillsUpTeam);
         for (WebElement i : element) {
