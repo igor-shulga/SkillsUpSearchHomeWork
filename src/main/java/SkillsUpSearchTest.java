@@ -9,33 +9,28 @@ import java.util.List;
 
 public class SkillsUpSearchTest extends BasePage {
     private By skillsUpTeam = new By.ByClassName("name");// or "member" if data with position needed
-    private String memberText;
     private By xPathForAlexander = new By.ByXPath("//*[@id='page_position_content']/div[3]/div[1]/div[2]/a/span[1]");
     private boolean x;
     private By artemXpath = By.xpath("//img[contains(@src,'/media/22116/Artem-Karpov_P.jpg')]");
-   // private List coachList;
-   private List coachList = new ArrayList();
 
     @Test
     public void testTestLookingForArtem() throws Exception {
-
-
         String PersonName1 = "Артем Карпов";
         System.out.println("Start looking for " + PersonName1);
-       // lookingPersonByName(PersonName);
-        assertFalse("Why is Artem here?!", coachList.contains("Артем Карпов"));
+        assertFalse("Why is Artem here?!", coachList().contains(PersonName1));
         System.out.println(PersonName1 + " not found :-( \n");
     }
 
-/*
+
     @Test
     public void testTestLookingForMisha() throws Exception {
-        String PersonName = "Чокан";
-        System.out.println("Start looking for " + PersonName);
-        lookingPersonByName(PersonName);
-        assertTrue("Where is Misha??", memberText.contains("Чокан"));
+        String PersonName2 = "Михаил Чокан";
+        System.out.println("Start looking for " + PersonName2);
+        assertTrue("Where is Misha??", coachList().contains(PersonName2));
+        System.out.println(PersonName2 + " found \n");
+
     }
-*/
+
 
     @Test
     public void testTestLookingForAlexander() throws Exception {
@@ -66,30 +61,13 @@ public class SkillsUpSearchTest extends BasePage {
 
     }
 
-  /*  private String lookingPersonByName(String PersonName) {
-
-        List<WebElement> element = driver.findElements(skillsUpTeam);
-
-        for (WebElement i : element) {
-            memberText = i.getText();
-            if (memberText.contains(PersonName)) {
-                System.out.println(PersonName + " found!!");
-                System.out.println(memberText + "\n");
-                return memberText;
-            }
-        }
-        return memberText;
-    } */
-
-    private List lookingPersonByName() {
-
-
+    private List coachList() {
+        List coachCards = new ArrayList();
         List<WebElement> element = driver.findElements(skillsUpTeam);
         for (WebElement i : element) {
-           // memberText = i.getText();
-            coachList.add(i.getText());
+           coachCards.add(i.getText());
         }
 
-        return coachList;
+        return coachCards;
     }
 }
