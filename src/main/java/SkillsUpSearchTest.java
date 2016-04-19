@@ -2,7 +2,6 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +16,7 @@ public class SkillsUpSearchTest extends BasePage {
     public void testTestLookingForArtem() throws Exception {
         String PersonName1 = "Артем Карпов";
         System.out.println("Start looking for " + PersonName1);
-        assertFalse("Why is Artem here?!", coachList().contains(PersonName1));
+        assertFalse("Why is Artem here?!", getCoachList().contains(PersonName1));
         System.out.println(PersonName1 + " not found :-( \n");
     }
 
@@ -26,9 +25,8 @@ public class SkillsUpSearchTest extends BasePage {
     public void testTestLookingForMisha() throws Exception {
         String PersonName2 = "Михаил Чокан";
         System.out.println("Start looking for " + PersonName2);
-        assertTrue("Where is Misha??", coachList().contains(PersonName2));
+        assertTrue("Where is Misha??", getCoachList().contains(PersonName2));
         System.out.println(PersonName2 + " found \n");
-
     }
 
 
@@ -61,13 +59,12 @@ public class SkillsUpSearchTest extends BasePage {
 
     }
 
-    private List coachList() {
+    private List getCoachList() {
         List coachCards = new ArrayList();
         List<WebElement> element = driver.findElements(skillsUpTeam);
         for (WebElement i : element) {
            coachCards.add(i.getText());
         }
-
         return coachCards;
     }
 }
