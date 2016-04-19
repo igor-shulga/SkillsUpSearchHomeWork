@@ -2,32 +2,32 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
 public class SkillsUpSearchTest extends BasePage {
-    private By skillsUpTeam = new By.ByClassName("member");
+    private By skillsUpTeam = new By.ByClassName("name");// or "member" if data with position needed
     private String memberText;
     private By xPathForAlexander = new By.ByXPath("//*[@id='page_position_content']/div[3]/div[1]/div[2]/a/span[1]");
     private boolean x;
     private By artemXpath = By.xpath("//img[contains(@src,'/media/22116/Artem-Karpov_P.jpg')]");
-
-
+   // private List coachList;
+   private List coachList = new ArrayList();
 
     @Test
     public void testTestLookingForArtem() throws Exception {
 
 
-        String PersonName = "Артем Карпов";
-        System.out.println("Start looking for " + PersonName);
-        lookingPersonByName(PersonName);
-        assertFalse("Why is Artem here?!", memberText.contains("Артем Карпов"));
-        System.out.println(PersonName + " not found :-( \n");
+        String PersonName1 = "Артем Карпов";
+        System.out.println("Start looking for " + PersonName1);
+       // lookingPersonByName(PersonName);
+        assertFalse("Why is Artem here?!", coachList.contains("Артем Карпов"));
+        System.out.println(PersonName1 + " not found :-( \n");
     }
 
-
+/*
     @Test
     public void testTestLookingForMisha() throws Exception {
         String PersonName = "Чокан";
@@ -35,7 +35,7 @@ public class SkillsUpSearchTest extends BasePage {
         lookingPersonByName(PersonName);
         assertTrue("Where is Misha??", memberText.contains("Чокан"));
     }
-
+*/
 
     @Test
     public void testTestLookingForAlexander() throws Exception {
@@ -47,26 +47,26 @@ public class SkillsUpSearchTest extends BasePage {
     }
 
     @Test
-    public void testFindArtemWithException()throws Exception{
+    public void testFindArtemWithException() throws Exception {
 
         artemAreYouHere();
         assertFalse("Artem found", x == true);
 
     }
 
-    public boolean artemAreYouHere(){
+    public boolean artemAreYouHere() {
 
         try {
             driver.findElement(artemXpath);
-            return x=true;
+            return x = true;
         } catch (NoSuchElementException e) {
             System.err.println("Such element not found: " + e.getMessage());
-            return x=false;
+            return x = false;
         }
 
     }
 
-    public String lookingPersonByName(String PersonName) {
+  /*  private String lookingPersonByName(String PersonName) {
 
         List<WebElement> element = driver.findElements(skillsUpTeam);
 
@@ -79,7 +79,17 @@ public class SkillsUpSearchTest extends BasePage {
             }
         }
         return memberText;
+    } */
+
+    private List lookingPersonByName() {
+
+
+        List<WebElement> element = driver.findElements(skillsUpTeam);
+        for (WebElement i : element) {
+           // memberText = i.getText();
+            coachList.add(i.getText());
+        }
+
+        return coachList;
     }
-
-
 }
